@@ -13,6 +13,7 @@ class GetStartedPage extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
             decoration: const BoxDecoration(
+              // Background image
               image: DecorationImage(
                 image: AssetImage('assets/images/img_getStarted.png'),
                 fit: BoxFit.cover,
@@ -23,6 +24,7 @@ class GetStartedPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                // Title
                 Text(
                   'Fly Like a Bird',
                   style: whiteTextStyle.copyWith(
@@ -31,6 +33,7 @@ class GetStartedPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
+                // Subtitle
                 Text(
                   'Explore new world with us and let\nyourself get an amazing experiences',
                   style: whiteTextStyle.copyWith(
@@ -39,6 +42,7 @@ class GetStartedPage extends StatelessWidget {
                   ),
                   textAlign: TextAlign.center,
                 ),
+                // Get started button
                 Container(
                   margin: const EdgeInsets.only(
                     top: 50,
@@ -51,7 +55,9 @@ class GetStartedPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(defaultRadius),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/sign-up');
+                    },
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                         vertical: 14,

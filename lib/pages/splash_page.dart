@@ -12,9 +12,10 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+
+  // Splash timer
   @override
   void initState() {
-    // TODO: implement initState
     Timer(
       const Duration(seconds: 3),
       () => Navigator.pushNamed(context, '/get-started'),
@@ -27,6 +28,7 @@ class _SplashPageState extends State<SplashPage> {
     return Scaffold(
       backgroundColor: primaryColor,
       body: Center(
+        // App icon
         child: Image.asset(
           'assets/images/app_logo.png',
           width: 100,

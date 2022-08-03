@@ -1,4 +1,5 @@
 import 'package:book_inn_air/pages/get-started_page.dart';
+import 'package:book_inn_air/pages/sign-up_page.dart';
 import 'package:book_inn_air/pages/splash_page.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const SplashPage(),
         '/get-started': (context) => const GetStartedPage(),
+        '/sign-up': (context) => const SignUpPage(),
       },
     );
   }
