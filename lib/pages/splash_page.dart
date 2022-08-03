@@ -1,8 +1,26 @@
+import 'dart:async';
+
+import 'package:book_inn_air/pages/get-started_page.dart';
 import 'package:book_inn_air/shared/styles.dart';
 import 'package:flutter/material.dart';
 
-class SplashPage extends StatelessWidget {
+class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
+
+  @override
+  State<SplashPage> createState() => _SplashPageState();
+}
+
+class _SplashPageState extends State<SplashPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    Timer(
+      const Duration(seconds: 3),
+      () => Navigator.pushNamed(context, '/get-started'),
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
