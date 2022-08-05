@@ -1,3 +1,4 @@
+import 'package:book_inn_air/pages/widgets/custom_button.dart';
 import 'package:book_inn_air/shared/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -112,49 +113,26 @@ class BonusPage extends StatelessWidget {
       );
     }
 
-    // Start button
-    Widget _startButton() {
-      return Container(
-        margin: const EdgeInsets.only(top: 50),
-        child: TextButton(
-          onPressed: () {},
-          style: TextButton.styleFrom(
-            backgroundColor: primaryColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(defaultRadius),
-              ),
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 14,
-              horizontal: 50,
-            ),
-            child: Text(
-              'Start Fly Now',
-              style: whiteTextStyle.copyWith(
-                fontSize: 18,
-                fontWeight: medium,
-              ),
-            ),
-          ),
-        ),
-      );
-    }
-
     return Scaffold(
-        backgroundColor: bgColor,
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _bonusCard(),
-              _bonusTitle(),
-              _bonusSubtitle(),
-              _startButton(),
-            ],
-          ),
-        ));
+      backgroundColor: bgColor,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _bonusCard(),
+            _bonusTitle(),
+            _bonusSubtitle(),
+            CustomButton(
+              title: 'Get Started',
+              margin: const EdgeInsets.only(top: 50),
+              width: 220,
+              onPressed: (() {
+                Navigator.pushNamed(context, '/dashboard');
+              }),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

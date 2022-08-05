@@ -1,4 +1,5 @@
 import 'package:book_inn_air/pages/bonus_page.dart';
+import 'package:book_inn_air/pages/dashboard_page.dart';
 import 'package:book_inn_air/pages/get-started_page.dart';
 import 'package:book_inn_air/pages/sign-up_page.dart';
 import 'package:book_inn_air/pages/splash_page.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         '/get-started': (context) => const GetStartedPage(),
         '/sign-up': (context) => const SignUpPage(),
         '/bonus': (context) => const BonusPage(),
+        '/dashboard': (context) => const DashboardPage(),
       },
     );
   }

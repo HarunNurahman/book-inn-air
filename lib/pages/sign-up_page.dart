@@ -1,3 +1,5 @@
+import 'package:book_inn_air/pages/widgets/custom_button.dart';
+import 'package:book_inn_air/pages/widgets/custom_text_form_field.dart';
 import 'package:book_inn_air/shared/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -31,167 +33,32 @@ class SignUpPage extends StatelessWidget {
     Widget _inputSection() {
       // Fullname textformfield
       Widget nameInput() {
-        return Container(
-          margin: const EdgeInsets.only(bottom: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Full Name',
-                style: blackTextStyle.copyWith(
-                  fontSize: 14,
-                ),
-              ),
-              const SizedBox(height: 6),
-              TextFormField(
-                cursorColor: primaryColor,
-                decoration: InputDecoration(
-                  hintText: 'Your Full Name',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(defaultRadius),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(defaultRadius),
-                    borderSide: BorderSide(
-                      color: primaryColor,
-                    ),
-                  ),
-                ),
-              )
-            ],
-          ),
-        );
+        return CustomTextFormField(
+            title: 'Full Name', hintText: 'Enter your full name');
       }
 
       // Email textformfield
       Widget emailInput() {
-        return Container(
-          margin: const EdgeInsets.only(bottom: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Email Address',
-                style: blackTextStyle.copyWith(
-                  fontSize: 14,
-                ),
-              ),
-              const SizedBox(height: 6),
-              TextFormField(
-                cursorColor: primaryColor,
-                decoration: InputDecoration(
-                  hintText: 'Your Email Address',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(defaultRadius),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(defaultRadius),
-                    borderSide: BorderSide(
-                      color: primaryColor,
-                    ),
-                  ),
-                ),
-              )
-            ],
-          ),
+        return CustomTextFormField(
+          title: 'Email',
+          hintText: 'Enter your email',
         );
       }
 
       // Password textformfield
       Widget passInput() {
-        return Container(
-          margin: const EdgeInsets.only(bottom: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Password',
-                style: blackTextStyle.copyWith(
-                  fontSize: 14,
-                ),
-              ),
-              const SizedBox(height: 6),
-              TextFormField(
-                obscureText: true,
-                cursorColor: primaryColor,
-                decoration: InputDecoration(
-                  hintText: 'Your Password',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(defaultRadius),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(defaultRadius),
-                    borderSide: BorderSide(
-                      color: primaryColor,
-                    ),
-                  ),
-                ),
-              )
-            ],
-          ),
+        return CustomTextFormField(
+          title: 'Password',
+          hintText: 'Enter your password',
+          obsecureText: true,
         );
       }
 
       // Hobby textformfield
       Widget hobbyInput() {
-        return Container(
-          margin: const EdgeInsets.only(bottom: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Hobby',
-                style: blackTextStyle.copyWith(
-                  fontSize: 14,
-                ),
-              ),
-              const SizedBox(height: 6),
-              TextFormField(
-                cursorColor: primaryColor,
-                decoration: InputDecoration(
-                  hintText: 'Your Hobby',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(defaultRadius),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(defaultRadius),
-                    borderSide: BorderSide(
-                      color: primaryColor,
-                    ),
-                  ),
-                ),
-              )
-            ],
-          ),
-        );
-      }
-
-      // Sign up button
-      Widget submitButton() {
-        return Container(
-          width: double.infinity,
-          child: TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/bonus');
-            },
-            style: TextButton.styleFrom(
-                backgroundColor: primaryColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(defaultRadius),
-                )),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 14,
-              ),
-              child: Text(
-                'Get Started',
-                style: whiteTextStyle.copyWith(
-                  fontSize: 18,
-                  fontWeight: medium,
-                ),
-              ),
-            ),
-          ),
+        return CustomTextFormField(
+          title: 'Hobby',
+          hintText: 'Enter your hobby',
         );
       }
 
@@ -212,7 +79,12 @@ class SignUpPage extends StatelessWidget {
             emailInput(),
             passInput(),
             hobbyInput(),
-            submitButton(),
+            CustomButton(
+              title: 'Get Started',
+              onPressed: (() {
+                Navigator.pushNamed(context, '/bonus');
+              }),
+            ),
           ],
         ),
       );

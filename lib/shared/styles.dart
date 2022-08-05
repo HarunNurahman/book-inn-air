@@ -10,6 +10,7 @@ Color kGrayColor = const Color(0xFF9698A9);
 Color kWhiteColor = const Color(0xFFFFFFFF);
 Color kGreenColor = const Color(0xFF0EC3AE);
 Color kRedColor = const Color(0xFFEB70A5);
+Color kTransparentColor = Colors.transparent;
 
 double defaultMargin = 24.0;
 double defaultRadius = 17.0;
