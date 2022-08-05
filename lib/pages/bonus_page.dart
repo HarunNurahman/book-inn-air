@@ -123,7 +123,7 @@ class BonusPage extends StatelessWidget {
             _bonusTitle(),
             _bonusSubtitle(),
             CustomButton(
-              title: 'Get Started',
+              title: 'Start Fly Now',
               margin: const EdgeInsets.only(top: 50),
               width: 220,
               onPressed: (() {
