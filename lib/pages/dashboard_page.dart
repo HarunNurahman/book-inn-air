@@ -1,3 +1,4 @@
+import 'package:book_inn_air/pages/home_page.dart';
 import 'package:book_inn_air/pages/widgets/custom_bottom_navigation_item.dart';
 import 'package:book_inn_air/shared/styles.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,10 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget _buildContent() {
+      return HomePage();
+    }
+
     // BottomNavBar Widget
     Widget _customBottomNavBar() {
       return Align(
@@ -55,9 +60,7 @@ class DashboardPage extends StatelessWidget {
       backgroundColor: bgColor,
       body: Stack(
         children: [
-          Center(
-            child: Text('Dashboard'),
-          ),
+          _buildContent(),
           _customBottomNavBar(),
         ],
       ),

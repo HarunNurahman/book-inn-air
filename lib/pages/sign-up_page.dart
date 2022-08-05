@@ -80,6 +80,7 @@ class SignUpPage extends StatelessWidget {
             passInput(),
             hobbyInput(),
             CustomButton(
+              margin: const EdgeInsets.only(top: 30),
               title: 'Get Started',
               onPressed: (() {
                 Navigator.pushNamed(context, '/bonus');
