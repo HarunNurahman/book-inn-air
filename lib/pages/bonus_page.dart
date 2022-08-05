@@ -25,6 +25,7 @@ class BonusPage extends StatelessWidget {
           ],
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
@@ -61,8 +62,83 @@ class BonusPage extends StatelessWidget {
                   ),
                 )
               ],
-            )
+            ),
+            const SizedBox(height: 41),
+            Text(
+              'Balance',
+              style: whiteTextStyle.copyWith(
+                fontSize: 14,
+                fontWeight: light,
+              ),
+            ),
+            Text(
+              'IDR 280.000.000',
+              style: whiteTextStyle.copyWith(
+                fontSize: 26,
+                fontWeight: medium,
+              ),
+            ),
           ],
+        ),
+      );
+    }
+
+    // Congratulation text
+    Widget _bonusTitle() {
+      return Container(
+        margin: const EdgeInsets.only(top: 80),
+        child: Text(
+          'Big Bonus 🎉',
+          style: blackTextStyle.copyWith(
+            fontSize: 32,
+            fontWeight: semiBold,
+          ),
+        ),
+      );
+    }
+
+    // Subtitle bonus
+    Widget _bonusSubtitle() {
+      return Container(
+        margin: const EdgeInsets.only(top: 10),
+        child: Text(
+          'We give you early credit so that\nyou can buy a flight ticket',
+          style: grayTextStyle.copyWith(
+            fontSize: 16,
+            fontWeight: light,
+          ),
+          textAlign: TextAlign.center,
+        ),
+      );
+    }
+
+    // Start button
+    Widget _startButton() {
+      return Container(
+        margin: const EdgeInsets.only(top: 50),
+        child: TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(
+            backgroundColor: primaryColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(defaultRadius),
+              ),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 14,
+              horizontal: 50,
+            ),
+            child: Text(
+              'Start Fly Now',
+              style: whiteTextStyle.copyWith(
+                fontSize: 18,
+                fontWeight: medium,
+              ),
+            ),
+          ),
         ),
       );
     }
@@ -74,6 +150,9 @@ class BonusPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _bonusCard(),
+              _bonusTitle(),
+              _bonusSubtitle(),
+              _startButton(),
             ],
           ),
         ));
