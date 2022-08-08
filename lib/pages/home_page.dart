@@ -1,4 +1,5 @@
 import 'package:book_inn_air/pages/widgets/destination_card.dart';
+import 'package:book_inn_air/pages/widgets/destination_tile.dart';
 import 'package:book_inn_air/shared/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -80,6 +81,23 @@ class HomePage extends StatelessWidget {
       );
     }
 
+    Widget _newDestination() {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'New This Year',
+            style: blackTextStyle.copyWith(
+              fontSize: 18,
+              fontWeight: semiBold,
+            ),
+          ),
+          const SizedBox(height: 16),
+          DestinationTile(),
+        ],
+      );
+    }
+
     return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
@@ -92,6 +110,8 @@ class HomePage extends StatelessWidget {
               _header(),
               const SizedBox(height: 30),
               _popularDestination(),
+              const SizedBox(height: 30),
+              _newDestination(),
             ],
           ),
         ),

@@ -17,8 +17,8 @@ class DestinationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return // White box for spacing
-        Container(
+    // White box for spacing
+    return Container(
       height: 325,
       width: 200,
       padding: const EdgeInsets.all(10),
