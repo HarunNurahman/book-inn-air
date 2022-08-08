@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
       return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
-          children: [
+          children: const [
             DestinationCard(
               imgUrl: 'assets/images/img_destination-1.png',
               name: 'Lake Ciliwung',
