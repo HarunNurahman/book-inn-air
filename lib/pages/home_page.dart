@@ -141,6 +141,7 @@ class HomePage extends StatelessWidget {
               _popularDestination(),
               const SizedBox(height: 30),
               _newDestination(),
+              const SizedBox(height: 60),
             ],
           ),
         ),
