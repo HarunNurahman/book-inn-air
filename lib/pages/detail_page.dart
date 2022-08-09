@@ -71,6 +71,7 @@ class DetailPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        // Destination name
                         Text(
                           'Lake Ciliwung',
                           style: whiteTextStyle.copyWith(
@@ -80,6 +81,7 @@ class DetailPage extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           maxLines: 2,
                         ),
+                        // Location
                         Text(
                           'Ciliwung, Bali',
                           style: whiteTextStyle.copyWith(
@@ -92,6 +94,7 @@ class DetailPage extends StatelessWidget {
                       ],
                     ),
                   ),
+                  // Rating
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -110,6 +113,41 @@ class DetailPage extends StatelessWidget {
                       )
                     ],
                   ),
+                ],
+              ),
+            ),
+
+            // About destination
+            Container(
+              width: double.infinity,
+              margin: const EdgeInsets.only(top: 30),
+              padding: EdgeInsets.symmetric(
+                vertical: defaultMargin + 6,
+                horizontal: defaultMargin - 4,
+              ),
+              decoration: BoxDecoration(
+                color: kWhiteColor,
+                borderRadius: BorderRadius.circular(defaultRadius),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'About',
+                    style: blackTextStyle.copyWith(
+                      fontSize: 16,
+                      fontWeight: semiBold,
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    'Berada di jalur jalan provinsi yang menghubungkan Denpasar Singaraja serta letaknya yang dekat dengan Kebun Raya Eka Karya menjadikan tempat Bali.',
+                    style: blackTextStyle.copyWith(
+                      fontSize: 14,
+                      fontWeight: regular,
+                      height: 2,
+                    ),
+                  )
                 ],
               ),
             )
