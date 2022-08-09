@@ -25,55 +25,63 @@ class DetailPage extends StatelessWidget {
                 ],
               ),
             ),
-            child: Container(
-              margin: EdgeInsets.only(
+            child: Padding(
+              padding: EdgeInsets.only(
                 top: 75,
                 left: defaultMargin,
                 right: defaultMargin,
               ),
-              child: Row(
+              child: Column(
                 children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Lake Ciliwung',
-                          style: whiteTextStyle.copyWith(
-                            fontSize: 24,
-                            fontWeight: semiBold,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                        ),
-                        const SizedBox(height: 5),
-                        Text(
-                          'Tangerang, Jawa Barat',
-                          style: whiteTextStyle.copyWith(
-                            fontSize: 14,
-                            fontWeight: light,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // Rating destination
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                  Column(
                     children: [
-                      Icon(
-                        Icons.star_rounded,
-                        color: kYellowColor,
-                        size: 24,
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Lake Ciliwung',
+                                  style: whiteTextStyle.copyWith(
+                                    fontSize: 24,
+                                    fontWeight: semiBold,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                ),
+                                Text(
+                                  'Tangerang, Jawa Barat',
+                                  style: whiteTextStyle.copyWith(
+                                    fontSize: 16,
+                                    fontWeight: light,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.star_rounded,
+                                color: kYellowColor,
+                                size: 24,
+                              ),
+                              Text(
+                                '4.5',
+                                style: whiteTextStyle.copyWith(
+                                  fontSize: 14,
+                                  fontWeight: medium,
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
                       ),
-                      Text(
-                        '4.6',
-                        style: whiteTextStyle.copyWith(
-                          fontSize: 14,
-                          fontWeight: medium,
-                        ),
-                      )
                     ],
                   ),
                 ],
@@ -101,6 +109,7 @@ class DetailPage extends StatelessWidget {
         );
       }
 
+      // Content for background image
       return Container(
         width: double.infinity,
         height: MediaQuery.of(context).size.height * 0.5,
