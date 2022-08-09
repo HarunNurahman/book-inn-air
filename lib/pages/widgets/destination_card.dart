@@ -12,7 +12,7 @@ class DestinationCard extends StatelessWidget {
     required this.imgUrl,
     required this.name,
     required this.location,
-    required this.rating,
+    this.rating = 0.0,
   }) : super(key: key);
 
   @override
@@ -21,6 +21,7 @@ class DestinationCard extends StatelessWidget {
     return Container(
       height: 325,
       width: 200,
+      margin: EdgeInsets.only(right: defaultMargin),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: kWhiteColor,

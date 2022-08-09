@@ -93,7 +93,36 @@ class HomePage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          DestinationTile(),
+          const DestinationTile(
+            imgUrl: 'assets/images/img_destination-6.png',
+            name: 'Danau Berawan',
+            location: 'Bali, Indonesia',
+            rating: 4.5,
+          ),
+          const DestinationTile(
+            imgUrl: 'assets/images/img_destination-7.png',
+            name: 'Opera House',
+            location: 'Sydney, Australia',
+            rating: 4.7,
+          ),
+          const DestinationTile(
+            imgUrl: 'assets/images/img_destination-8.png',
+            name: 'Roma',
+            location: 'Roma, Italy',
+            rating: 4.8,
+          ),
+          const DestinationTile(
+            imgUrl: 'assets/images/img_destination-5.png',
+            name: 'Big Umbrella',
+            location: 'Singapore',
+            rating: 4.5,
+          ),
+          const DestinationTile(
+            imgUrl: 'assets/images/img_destination-9.png',
+            name: 'Hill Hey',
+            location: 'Monte-Carlo, Monaco',
+            rating: 4.7,
+          ),
         ],
       );
     }
