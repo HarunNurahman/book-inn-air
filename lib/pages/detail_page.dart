@@ -1,3 +1,4 @@
+import 'package:book_inn_air/pages/choose_seat_page.dart';
 import 'package:book_inn_air/pages/widgets/custom_button.dart';
 import 'package:book_inn_air/pages/widgets/detail_picture_item.dart';
 import 'package:book_inn_air/pages/widgets/interest_item.dart';
@@ -243,7 +244,14 @@ class DetailPage extends StatelessWidget {
                   // Book button
                   CustomButton(
                     title: 'Book Now',
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChooseSeatPage(),
+                        ),
+                      );
+                    },
                     width: 170,
                   )
                 ],
