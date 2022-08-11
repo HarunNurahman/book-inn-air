@@ -218,6 +218,75 @@ class CheckoutPage extends StatelessWidget {
       );
     }
 
+    Widget _paymentDetail() {
+      return Container(
+        width: double.infinity,
+        margin: EdgeInsets.only(top: defaultMargin + 6),
+        padding: EdgeInsets.symmetric(
+          horizontal: defaultMargin - 4,
+          vertical: defaultMargin + 6,
+        ),
+        decoration: BoxDecoration(
+          color: kWhiteColor,
+          borderRadius: BorderRadius.circular(defaultRadius),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Payment Details',
+              style: blackTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: semiBold,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: defaultMargin - 8),
+              child: Row(
+                children: [
+                  Stack(
+                    children: [
+                      Center(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(defaultRadius),
+                          child: Image.asset(
+                            'assets/images/img_card.png',
+                            width: 100,
+                          ),
+                        ),
+                      ),
+                      Positioned.fill(
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/images/app_logo.png',
+                                width: 16,
+                              ),
+                              const SizedBox(width: 6),
+                              Text(
+                                'Pay',
+                                style: whiteTextStyle.copyWith(
+                                  fontSize: 16,
+                                  fontWeight: medium,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+      );
+    }
+
     return Scaffold(
         backgroundColor: bgColor,
         body: SafeArea(
@@ -232,6 +301,7 @@ class CheckoutPage extends StatelessWidget {
                 children: [
                   _imgRoute(),
                   _bookingDetail(),
+                  _paymentDetail(),
                 ],
               ),
             ),
