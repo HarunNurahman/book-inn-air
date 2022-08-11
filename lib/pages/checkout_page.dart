@@ -241,18 +241,20 @@ class CheckoutPage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: defaultMargin - 8),
+              padding: EdgeInsets.only(
+                top: defaultMargin - 8,
+              ),
               child: Row(
                 children: [
+                  // Icon selected payment method
                   Stack(
                     children: [
-                      Center(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(defaultRadius),
-                          child: Image.asset(
-                            'assets/images/img_card.png',
-                            width: 100,
-                          ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(defaultRadius),
+                        child: Image.asset(
+                          'assets/images/img_card.png',
+                          width: 100,
+                          fit: BoxFit.cover,
                         ),
                       ),
                       Positioned.fill(
@@ -275,6 +277,26 @@ class CheckoutPage extends StatelessWidget {
                               )
                             ],
                           ),
+                        ),
+                      )
+                    ],
+                  ),
+                  const SizedBox(width: 16),
+                  // Current balance
+                  Column(
+                    children: [
+                      Text(
+                        'IDR 10.000.000',
+                        style: blackTextStyle.copyWith(
+                          fontSize: 18,
+                          fontWeight: medium,
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        'Current Balance',
+                        style: grayTextStyle.copyWith(
+                          fontWeight: light,
                         ),
                       )
                     ],
