@@ -1,3 +1,4 @@
+import 'package:book_inn_air/pages/checkout_page.dart';
 import 'package:book_inn_air/pages/widgets/custom_button.dart';
 import 'package:book_inn_air/pages/widgets/seat_item.dart';
 import 'package:book_inn_air/shared/styles.dart';
@@ -378,7 +379,14 @@ class ChooseSeatPage extends StatelessWidget {
         padding: EdgeInsets.only(top: defaultMargin + 6),
         child: CustomButton(
           title: 'Continue to Checkout',
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => CheckoutPage(),
+              ),
+            );
+          },
           width: double.infinity,
         ),
       );
