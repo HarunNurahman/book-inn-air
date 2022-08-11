@@ -5,6 +5,9 @@ Color primaryColor = const Color(0xFF5C40CC);
 Color bgColor = const Color(0xFFFAFAFA);
 Color kInactiveColor = const Color(0xFFDBD7EC);
 
+Color kUnavailableColor = const Color(0xFFEBECF1);
+Color kAvailableColor = const Color(0xFFE0D9FF);
+
 Color kPurpleColor = const Color(0xFF1F1449);
 Color kGrayColor = const Color(0xFF9698A9);
 Color kWhiteColor = const Color(0xFFFFFFFF);
