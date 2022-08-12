@@ -16,7 +16,9 @@ class CustomBottomNavItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.read<PageCubit>().setPages(index),
+      onTap: () {
+        context.read<PageCubit>().setPages(index);
+      },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -24,7 +26,7 @@ class CustomBottomNavItem extends StatelessWidget {
           Image.asset(
             imgUrl,
             width: 24,
-            color: context.read<PageCubit>().state == index
+            color: context.watch<PageCubit>().state == index
                 ? primaryColor
                 : kGrayColor,
           ),
@@ -33,7 +35,7 @@ class CustomBottomNavItem extends StatelessWidget {
             width: 30,
             height: 2,
             decoration: BoxDecoration(
-              color: context.read<PageCubit>().state == index
+              color: context.watch<PageCubit>().state == index
                   ? primaryColor
                   : kTransparentColor,
               borderRadius: BorderRadius.circular(defaultRadius),
