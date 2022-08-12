@@ -1,3 +1,4 @@
+import 'package:book_inn_air/pages/success_checkout_page.dart';
 import 'package:book_inn_air/pages/widgets/booking_detail_item.dart';
 import 'package:book_inn_air/pages/widgets/custom_button.dart';
 import 'package:book_inn_air/shared/styles.dart';
@@ -319,7 +320,14 @@ class CheckoutPage extends StatelessWidget {
         padding: EdgeInsets.only(top: defaultMargin + 6),
         child: CustomButton(
           title: 'Pay Now',
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SuccessCheckout(),
+              ),
+            );
+          },
         ),
       );
     }
