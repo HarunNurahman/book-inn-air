@@ -17,14 +17,17 @@ class SignUpPage extends StatelessWidget {
     }
 
     Widget _tncButton() {
-      return Align(
-        alignment: Alignment.bottomCenter,
-        child: Text(
-          'Terms and Conditions',
-          style: grayTextStyle.copyWith(
-            fontSize: 16,
-            fontWeight: light,
-            decoration: TextDecoration.underline,
+      return GestureDetector(
+        onTap: () {},
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: Text(
+            'Terms and Conditions',
+            style: grayTextStyle.copyWith(
+              fontSize: 16,
+              fontWeight: light,
+              decoration: TextDecoration.underline,
+            ),
           ),
         ),
       );

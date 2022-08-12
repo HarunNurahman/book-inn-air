@@ -21,7 +21,7 @@ class InterestItem extends StatelessWidget {
           ),
           const SizedBox(width: 6),
           Text(
-            'Kids Park',
+            title,
             style: blackTextStyle,
           ),
         ],

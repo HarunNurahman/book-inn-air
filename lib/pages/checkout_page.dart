@@ -1,4 +1,5 @@
 import 'package:book_inn_air/pages/widgets/booking_detail_item.dart';
+import 'package:book_inn_air/pages/widgets/custom_button.dart';
 import 'package:book_inn_air/shared/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -283,28 +284,61 @@ class CheckoutPage extends StatelessWidget {
                   ),
                   const SizedBox(width: 16),
                   // Current balance
-                  Column(
-                    children: [
-                      Text(
-                        'IDR 10.000.000',
-                        style: blackTextStyle.copyWith(
-                          fontSize: 18,
-                          fontWeight: medium,
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text(
+                          'IDR 10.000.000',
+                          style: blackTextStyle.copyWith(
+                            fontSize: 18,
+                            fontWeight: medium,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
                         ),
-                      ),
-                      const SizedBox(height: 5),
-                      Text(
-                        'Current Balance',
-                        style: grayTextStyle.copyWith(
-                          fontWeight: light,
-                        ),
-                      )
-                    ],
+                        const SizedBox(height: 5),
+                        Text(
+                          'Current Balance',
+                          style: grayTextStyle.copyWith(
+                            fontWeight: light,
+                          ),
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
             )
           ],
+        ),
+      );
+    }
+
+    Widget _payNowButton() {
+      return Padding(
+        padding: EdgeInsets.only(top: defaultMargin + 6),
+        child: CustomButton(
+          title: 'Pay Now',
+          onPressed: () {},
+        ),
+      );
+    }
+
+    Widget _tncButton() {
+      return GestureDetector(
+        onTap: () {},
+        child: Padding(
+          padding: EdgeInsets.only(top: defaultMargin + 6),
+          child: Center(
+            child: Text(
+              'Terms and Conditions',
+              style: grayTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: light,
+                decoration: TextDecoration.underline,
+              ),
+            ),
+          ),
         ),
       );
     }
@@ -324,6 +358,8 @@ class CheckoutPage extends StatelessWidget {
                   _imgRoute(),
                   _bookingDetail(),
                   _paymentDetail(),
+                  _payNowButton(),
+                  _tncButton(),
                 ],
               ),
             ),
