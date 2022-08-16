@@ -127,7 +127,11 @@ class BonusPage extends StatelessWidget {
               margin: const EdgeInsets.only(top: 50),
               width: 220,
               onPressed: (() {
-                Navigator.pushNamed(context, '/dashboard');
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  '/dashboard',
+                  (route) => false,
+                );
               }),
             ),
           ],
