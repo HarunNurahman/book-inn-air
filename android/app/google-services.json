@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "143989751361",
+    "project_id": "bwa-airplane-c52b4",
+    "storage_bucket": "bwa-airplane-c52b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143989751361:android:42506ebe777c32ecf950c0",
+        "android_client_info": {
+          "package_name": "com.bwaharunamanya.book_inn_air"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "143989751361-97a1b6243gvs7f1gep6akrrvlf7uaf1p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARmnRu7GrQMUvmf7sv_gBNIDx3JIU1czg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "143989751361-97a1b6243gvs7f1gep6akrrvlf7uaf1p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
