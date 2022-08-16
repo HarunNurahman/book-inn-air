@@ -1,3 +1,4 @@
+import 'package:book_inn_air/cubit/auth_cubit.dart';
 import 'package:book_inn_air/cubit/page_cubit.dart';
 import 'package:book_inn_air/pages/bonus_page.dart';
 import 'package:book_inn_air/pages/dashboard_page.dart';
@@ -33,6 +34,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<PageCubit>(
           create: (context) => PageCubit(),
         ),
+        BlocProvider(
+          create: (context) => AuthCubit(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -42,7 +46,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (context) => const SplashPage(),
           '/get-started': (context) => const GetStartedPage(),
-          '/sign-up': (context) => const SignUpPage(),
+          '/sign-up': (context) => SignUpPage(),
           '/bonus': (context) => const BonusPage(),
           '/dashboard': (context) => const DashboardPage(),
         },

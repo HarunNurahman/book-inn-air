@@ -4,7 +4,12 @@ import 'package:book_inn_air/shared/styles.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatelessWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+  SignUpPage({Key? key}) : super(key: key);
+
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passController = TextEditingController();
+  TextEditingController _hobbyController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +42,10 @@ class SignUpPage extends StatelessWidget {
       // Fullname textformfield
       Widget nameInput() {
         return CustomTextFormField(
-            title: 'Full Name', hintText: 'Enter your full name');
+          title: 'Full Name',
+          hintText: 'Enter your full name',
+          controller: _nameController,
+        );
       }
 
       // Email textformfield
@@ -45,6 +53,7 @@ class SignUpPage extends StatelessWidget {
         return CustomTextFormField(
           title: 'Email',
           hintText: 'Enter your email',
+          controller: _emailController,
         );
       }
 
@@ -54,6 +63,7 @@ class SignUpPage extends StatelessWidget {
           title: 'Password',
           hintText: 'Enter your password',
           obsecureText: true,
+          controller: _passController,
         );
       }
 
@@ -62,6 +72,17 @@ class SignUpPage extends StatelessWidget {
         return CustomTextFormField(
           title: 'Hobby',
           hintText: 'Enter your hobby',
+          controller: _hobbyController,
+        );
+      }
+
+      // Signup button
+      Widget signUpButton() {
+        return CustomButton(
+          title: 'Get Started',
+          onPressed: (() {
+            Navigator.pushNamed(context, '/bonus');
+          }),
         );
       }
 
@@ -82,13 +103,7 @@ class SignUpPage extends StatelessWidget {
             emailInput(),
             passInput(),
             hobbyInput(),
-            CustomButton(
-              margin: const EdgeInsets.only(top: 30),
-              title: 'Get Started',
-              onPressed: (() {
-                Navigator.pushNamed(context, '/bonus');
-              }),
-            ),
+            signUpButton(),
           ],
         ),
       );
