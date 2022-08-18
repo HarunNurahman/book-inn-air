@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:book_inn_air/pages/get-started_page.dart';
 import 'package:book_inn_air/shared/styles.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
@@ -12,14 +13,25 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-
   // Splash timer
   @override
   void initState() {
-    Timer(
-      const Duration(seconds: 3),
-      () => Navigator.pushNamed(context, '/get-started'),
-    );
+    Timer(const Duration(seconds: 3), () {
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user == null) {
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          '/get-started',
+          (route) => false,
+        );
+      } else {
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          '/dashboard',
+          (route) => false,
+        );
+      }
+    });
     super.initState();
   }
 
