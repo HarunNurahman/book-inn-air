@@ -1,7 +1,9 @@
+import 'package:book_inn_air/cubit/auth_cubit.dart';
 import 'package:book_inn_air/pages/widgets/destination_card.dart';
 import 'package:book_inn_air/pages/widgets/destination_tile.dart';
 import 'package:book_inn_air/shared/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -9,35 +11,44 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget _header() {
-      return Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      return BlocBuilder<AuthCubit, AuthState>(
+        builder: (context, state) {
+          if (state is AuthSuccess) {
+            return Row(
               children: [
-                Text(
-                  'Howdy,\nKezia Anne',
-                  style: blackTextStyle.copyWith(
-                    fontSize: 24,
-                    fontWeight: semiBold,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        state.user.name,
+                        style: blackTextStyle.copyWith(
+                          fontSize: 24,
+                          fontWeight: semiBold,
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        'Where to fly today?',
+                        style: grayTextStyle.copyWith(
+                          fontSize: 16,
+                          fontWeight: light,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                const SizedBox(height: 6),
-                Text(
-                  'Where to fly today?',
-                  style: grayTextStyle.copyWith(
-                    fontSize: 16,
-                    fontWeight: light,
-                  ),
+                const CircleAvatar(
+                  radius: 30,
+                  backgroundImage:
+                      AssetImage('assets/images/img_profilePic.png'),
                 ),
               ],
-            ),
-          ),
-          const CircleAvatar(
-            radius: 30,
-            backgroundImage: AssetImage('assets/images/img_profilePic.png'),
-          ),
-        ],
+            );
+          } else {
+            return const SizedBox();
+          }
+        },
       );
     }
 
