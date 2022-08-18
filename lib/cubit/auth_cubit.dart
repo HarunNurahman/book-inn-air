@@ -9,6 +9,24 @@ part 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
 
+  // Sign in method
+  void signIn({
+    required String email,
+    required String pass,
+  }) async {
+    try {
+      emit(AuthLoading());
+      UserModel userModel = await AuthService().signIn(
+        email: email,
+        pass: pass,
+      );
+      emit(AuthSuccess(userModel));
+    } catch (e) {
+      emit(AuthFailed(e.toString()));
+    }
+  }
+
+  // Sign up method
   void signUp({
     required String email,
     required String pass,

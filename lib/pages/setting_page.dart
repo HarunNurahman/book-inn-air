@@ -1,4 +1,5 @@
 import 'package:book_inn_air/cubit/auth_cubit.dart';
+import 'package:book_inn_air/cubit/page_cubit.dart';
 import 'package:book_inn_air/pages/widgets/custom_button.dart';
 import 'package:book_inn_air/shared/styles.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +20,10 @@ class SettingPage extends StatelessWidget {
             ),
           );
         } else if (state is AuthInitial) {
+          context.read<PageCubit>().setPages(0);
           Navigator.pushNamedAndRemoveUntil(
             context,
-            '/sign-up',
+            '/sign-in',
             (route) => false,
           );
         }

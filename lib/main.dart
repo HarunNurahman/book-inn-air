@@ -3,6 +3,7 @@ import 'package:book_inn_air/cubit/page_cubit.dart';
 import 'package:book_inn_air/pages/bonus_page.dart';
 import 'package:book_inn_air/pages/dashboard_page.dart';
 import 'package:book_inn_air/pages/get-started_page.dart';
+import 'package:book_inn_air/pages/sign-in_page.dart';
 import 'package:book_inn_air/pages/sign-up_page.dart';
 import 'package:book_inn_air/pages/splash_page.dart';
 import 'package:device_preview/device_preview.dart';
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
           '/': (context) => const SplashPage(),
           '/get-started': (context) => const GetStartedPage(),
           '/sign-up': (context) => SignUpPage(),
+          '/sign-in': (context) => SignInPage(),
           '/bonus': (context) => const BonusPage(),
           '/dashboard': (context) => const DashboardPage(),
         },

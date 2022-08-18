@@ -5,33 +5,30 @@ import 'package:book_inn_air/shared/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SignUpPage extends StatelessWidget {
-  SignUpPage({Key? key}) : super(key: key);
+class SignInPage extends StatelessWidget {
+  SignInPage({Key? key}) : super(key: key);
 
-  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passController = TextEditingController();
-  final TextEditingController _hobbyController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     // Header
     Widget _title() {
       return Text(
-        'Join us and get\nyour next journey',
+        'Sign-in with your existing account',
         style: blackTextStyle.copyWith(fontSize: 24, fontWeight: semiBold),
       );
     }
 
-    Widget _signInButton() {
+    Widget _signUpButton() {
       return GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, '/sign-in');
+          Navigator.pushNamed(context, '/sign-up');
         },
-        child: Align(
-          alignment: Alignment.bottomCenter,
+        child: Center(
           child: Text(
-            'Already have an account? Sign In',
+            'Don\'t have an account? Sign Up',
             style: grayTextStyle.copyWith(
               fontSize: 16,
               fontWeight: light,
@@ -43,15 +40,6 @@ class SignUpPage extends StatelessWidget {
     }
 
     Widget _inputSection() {
-      // Fullname textformfield
-      Widget nameInput() {
-        return CustomTextFormField(
-          title: 'Full Name',
-          hintText: 'Enter your full name',
-          controller: _nameController,
-        );
-      }
-
       // Email textformfield
       Widget emailInput() {
         return CustomTextFormField(
@@ -71,23 +59,14 @@ class SignUpPage extends StatelessWidget {
         );
       }
 
-      // Hobby textformfield
-      Widget hobbyInput() {
-        return CustomTextFormField(
-          title: 'Hobby',
-          hintText: 'Enter your hobby',
-          controller: _hobbyController,
-        );
-      }
-
       // Signup button
-      Widget signUpButton() {
+      Widget signInButton() {
         return BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
             if (state is AuthSuccess) {
               Navigator.pushNamedAndRemoveUntil(
                 context,
-                '/bonus',
+                '/dashboard',
                 (route) => false,
               );
             } else if (state is AuthFailed) {
@@ -106,14 +85,11 @@ class SignUpPage extends StatelessWidget {
               );
             }
             return CustomButton(
-              title: 'Get Started',
+              title: 'Sign In',
               onPressed: (() {
-                print(_passController.text);
-                context.read<AuthCubit>().signUp(
+                context.read<AuthCubit>().signIn(
                       email: _emailController.text,
                       pass: _passController.text,
-                      name: _nameController.text,
-                      hobby: _hobbyController.text,
                     );
               }),
             );
@@ -134,11 +110,9 @@ class SignUpPage extends StatelessWidget {
         ),
         child: Column(
           children: [
-            nameInput(),
             emailInput(),
             passInput(),
-            hobbyInput(),
-            signUpButton(),
+            signInButton(),
           ],
         ),
       );
@@ -159,7 +133,7 @@ class SignUpPage extends StatelessWidget {
               children: [
                 _title(),
                 _inputSection(),
-                _signInButton(),
+                _signUpButton(),
               ],
             ),
           ),
