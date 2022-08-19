@@ -1,12 +1,24 @@
 import 'package:book_inn_air/cubit/auth_cubit.dart';
+import 'package:book_inn_air/cubit/destination_cubit.dart';
 import 'package:book_inn_air/pages/widgets/destination_card.dart';
 import 'package:book_inn_air/pages/widgets/destination_tile.dart';
 import 'package:book_inn_air/shared/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    context.read<DestinationCubit>().fetchDestination();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -138,25 +150,30 @@ class HomePage extends StatelessWidget {
       );
     }
 
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: defaultMargin,
-            vertical: defaultMargin + 6,
+    return BlocConsumer<DestinationCubit, DestinationState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return SafeArea(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: defaultMargin,
+                vertical: defaultMargin + 6,
+              ),
+              child: Column(
+                children: [
+                  _header(),
+                  const SizedBox(height: 30),
+                  _popularDestination(),
+                  const SizedBox(height: 30),
+                  _newDestination(),
+                  const SizedBox(height: 60),
+                ],
+              ),
+            ),
           ),
-          child: Column(
-            children: [
-              _header(),
-              const SizedBox(height: 30),
-              _popularDestination(),
-              const SizedBox(height: 30),
-              _newDestination(),
-              const SizedBox(height: 60),
-            ],
-          ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
