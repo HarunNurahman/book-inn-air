@@ -7,7 +7,7 @@ class DestinationModel extends Equatable {
   final String imageUrl;
   final double rating;
   final int price;
-  final List<String> interest;
+  final List interest;
 
   DestinationModel({
     required this.id,
@@ -25,7 +25,7 @@ class DestinationModel extends Equatable {
         name: json['name'],
         location: json['location'],
         imageUrl: json['imageUrl'],
-        rating: json['rating'],
+        rating: json['rating'].toDouble(),
         price: json['price'],
         interest: json['interest'],
       );

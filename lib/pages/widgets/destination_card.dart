@@ -1,19 +1,14 @@
+import 'package:book_inn_air/models/destination_model.dart';
 import 'package:book_inn_air/pages/detail_page.dart';
 import 'package:book_inn_air/shared/styles.dart';
 import 'package:flutter/material.dart';
 
 class DestinationCard extends StatelessWidget {
-  final String imgUrl;
-  final String name;
-  final String location;
-  final double rating;
+  final DestinationModel destinations;
 
-  const DestinationCard({
+  const DestinationCard(
+    this.destinations, {
     Key? key,
-    required this.imgUrl,
-    required this.name,
-    required this.location,
-    this.rating = 0.0,
   }) : super(key: key);
 
   @override
@@ -48,9 +43,10 @@ class DestinationCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(18),
                 image: DecorationImage(
-                  image: AssetImage(
-                    imgUrl,
+                  image: NetworkImage(
+                    destinations.imageUrl,
                   ),
+                  fit: BoxFit.cover,
                 ),
               ),
               // Rating destination
@@ -77,7 +73,7 @@ class DestinationCard extends StatelessWidget {
                         size: 20,
                       ),
                       Text(
-                        rating.toString(),
+                        destinations.rating.toString(),
                         style: blackTextStyle.copyWith(
                           fontSize: 14,
                           fontWeight: medium,
@@ -95,7 +91,7 @@ class DestinationCard extends StatelessWidget {
                 children: [
                   // Destination name
                   Text(
-                    name,
+                    destinations.name,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: blackTextStyle.copyWith(
@@ -106,7 +102,7 @@ class DestinationCard extends StatelessWidget {
                   const SizedBox(height: 5),
                   // Destination location
                   Text(
-                    location,
+                    destinations.location,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: grayTextStyle.copyWith(

@@ -1,5 +1,6 @@
 import 'package:book_inn_air/cubit/auth_cubit.dart';
 import 'package:book_inn_air/cubit/destination_cubit.dart';
+import 'package:book_inn_air/models/destination_model.dart';
 import 'package:book_inn_air/pages/widgets/destination_card.dart';
 import 'package:book_inn_air/pages/widgets/destination_tile.dart';
 import 'package:book_inn_air/shared/styles.dart';
@@ -18,6 +19,10 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     context.read<DestinationCubit>().fetchDestination();
     super.initState();
+  }
+
+  Future refresh() async {
+    context.read<DestinationCubit>().fetchDestination();
   }
 
   @override
@@ -64,42 +69,13 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
-    Widget _popularDestination() {
+    Widget _popularDestination(List<DestinationModel> destinations) {
       return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
-          children: const [
-            DestinationCard(
-              imgUrl: 'assets/images/img_destination-1.png',
-              name: 'Lake Ciliwung',
-              location: 'Tangerang, Indonesia',
-              rating: 4.8,
-            ),
-            DestinationCard(
-              imgUrl: 'assets/images/img_destination-2.png',
-              name: 'White Houses',
-              location: 'Real Madrid, Spain',
-              rating: 4.7,
-            ),
-            DestinationCard(
-              imgUrl: 'assets/images/img_destination-3.png',
-              name: 'Hill Heyo',
-              location: 'Monte-Carlo, Monaco',
-              rating: 4.8,
-            ),
-            DestinationCard(
-              imgUrl: 'assets/images/img_destination-4.png',
-              name: 'Takeshi Castle',
-              location: 'Osaka, Japan',
-              rating: 5.0,
-            ),
-            DestinationCard(
-              imgUrl: 'assets/images/img_destination-5.png',
-              name: 'The Big Umbrella',
-              location: 'Singapore',
-              rating: 4.8,
-            ),
-          ],
+          children: destinations.map((DestinationModel destination) {
+            return DestinationCard(destination);
+          }).toList(),
         ),
       );
     }
@@ -151,27 +127,44 @@ class _HomePageState extends State<HomePage> {
     }
 
     return BlocConsumer<DestinationCubit, DestinationState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is DestinationFailed) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: kRedColor,
+              content: Text(state.errorMessage),
+            ),
+          );
+        }
+      },
       builder: (context, state) {
-        return SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: defaultMargin,
-                vertical: defaultMargin + 6,
-              ),
-              child: Column(
-                children: [
-                  _header(),
-                  const SizedBox(height: 30),
-                  _popularDestination(),
-                  const SizedBox(height: 30),
-                  _newDestination(),
-                  const SizedBox(height: 60),
-                ],
+        if (state is DestinationSuccess) {
+          return SafeArea(
+            child: RefreshIndicator(
+              onRefresh: refresh,
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: defaultMargin,
+                    vertical: defaultMargin + 6,
+                  ),
+                  child: Column(
+                    children: [
+                      _header(),
+                      const SizedBox(height: 30),
+                      _popularDestination(state.destinations),
+                      const SizedBox(height: 30),
+                      _newDestination(),
+                      const SizedBox(height: 60),
+                    ],
+                  ),
+                ),
               ),
             ),
-          ),
+          );
+        }
+        return const Center(
+          child: CircularProgressIndicator(),
         );
       },
     );
