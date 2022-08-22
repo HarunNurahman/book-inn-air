@@ -22,7 +22,9 @@ class InterestItem extends StatelessWidget {
           const SizedBox(width: 6),
           Text(
             title,
-            style: blackTextStyle,
+            style: blackTextStyle.copyWith(fontSize: 12),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),

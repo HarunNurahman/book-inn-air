@@ -5,14 +5,16 @@ class DestinationModel extends Equatable {
   final String name;
   final String location;
   final String imageUrl;
+  final String about;
   final double rating;
   final int price;
-  final List interest;
+  final List<dynamic> interest;
 
   DestinationModel({
     required this.id,
     this.name = '',
     this.location = '',
+    this.about = '',
     this.imageUrl = '',
     this.rating = 0.0,
     this.price = 0,
@@ -25,6 +27,7 @@ class DestinationModel extends Equatable {
         name: json['name'],
         location: json['location'],
         imageUrl: json['imageUrl'],
+        about: json['about'],
         rating: json['rating'].toDouble(),
         price: json['price'],
         interest: json['interest'],

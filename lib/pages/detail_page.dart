@@ -1,27 +1,48 @@
+import 'package:book_inn_air/cubit/destination_cubit.dart';
+import 'package:book_inn_air/models/destination_model.dart';
 import 'package:book_inn_air/pages/choose_seat_page.dart';
 import 'package:book_inn_air/pages/widgets/custom_button.dart';
 import 'package:book_inn_air/pages/widgets/detail_picture_item.dart';
 import 'package:book_inn_air/pages/widgets/interest_item.dart';
 import 'package:book_inn_air/shared/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
-class DetailPage extends StatelessWidget {
-  const DetailPage({Key? key}) : super(key: key);
+class DetailPage extends StatefulWidget {
+  final DestinationModel _destinationModel;
+
+  const DetailPage(this._destinationModel, {Key? key}) : super(key: key);
+
+  @override
+  State<DetailPage> createState() => _DetailPageState();
+}
+
+class _DetailPageState extends State<DetailPage> {
+  @override
+  void initState() {
+    context.read<DestinationCubit>().fetchDestination();
+    super.initState();
+  }
+
+  Future refresh() async {
+    context.read<DestinationCubit>().fetchDestination();
+  }
 
   @override
   Widget build(BuildContext context) {
     Widget _backgroundImage() {
       Widget _dropShadow() {
         return Container(
-          margin: const EdgeInsets.only(top: 250),
-          height: 250,
+          margin: const EdgeInsets.only(top: 150),
+          height: 300,
           width: double.infinity,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Colors.black.withOpacity(0.2),
+                kWhiteColor.withOpacity(0.0),
                 Colors.black.withOpacity(0.9),
               ],
             ),
@@ -32,11 +53,11 @@ class DetailPage extends StatelessWidget {
       return Container(
         width: double.infinity,
         height: MediaQuery.of(context).size.height * 0.55,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: AssetImage(
-              'assets/images/img_destination-1.png',
+            image: NetworkImage(
+              widget._destinationModel.imageUrl,
             ),
           ),
         ),
@@ -77,7 +98,7 @@ class DetailPage extends StatelessWidget {
                       children: [
                         // Destination name
                         Text(
-                          'Lake Ciliwung',
+                          widget._destinationModel.name,
                           style: whiteTextStyle.copyWith(
                             fontSize: 24,
                             fontWeight: semiBold,
@@ -87,7 +108,7 @@ class DetailPage extends StatelessWidget {
                         ),
                         // Location
                         Text(
-                          'Ciliwung, Bali',
+                          widget._destinationModel.location,
                           style: whiteTextStyle.copyWith(
                             fontSize: 16,
                             fontWeight: light,
@@ -109,7 +130,7 @@ class DetailPage extends StatelessWidget {
                         size: 24,
                       ),
                       Text(
-                        '4.5',
+                        widget._destinationModel.rating.toString(),
                         style: whiteTextStyle.copyWith(
                           fontSize: 14,
                           fontWeight: medium,
@@ -145,7 +166,9 @@ class DetailPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    'Berada di jalur jalan provinsi yang menghubungkan Denpasar Singaraja serta letaknya yang dekat dengan Kebun Raya Eka Karya menjadikan tempat Bali.',
+                    widget._destinationModel.about,
+                    maxLines: 6,
+                    overflow: TextOverflow.ellipsis,
                     style: blackTextStyle.copyWith(
                       fontSize: 14,
                       fontWeight: regular,
@@ -187,25 +210,25 @@ class DetailPage extends StatelessWidget {
                       fontWeight: semiBold,
                     ),
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 8),
                   Row(
-                    children: const [
+                    children: [
                       InterestItem(
-                        title: 'Kids Park',
+                        title: widget._destinationModel.interest[0].toString(),
                       ),
                       InterestItem(
-                        title: 'Honor Bridge',
+                        title: widget._destinationModel.interest[1].toString(),
                       ),
                     ],
                   ),
                   const SizedBox(height: 10),
                   Row(
-                    children: const [
+                    children: [
                       InterestItem(
-                        title: 'City Museum',
+                        title: widget._destinationModel.interest[2].toString(),
                       ),
                       InterestItem(
-                        title: 'Central Mall',
+                        title: widget._destinationModel.interest[3].toString(),
                       ),
                     ],
                   ),
@@ -225,7 +248,11 @@ class DetailPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Rp 2.500.000',
+                          NumberFormat.currency(
+                            locale: 'id_ID',
+                            symbol: 'IDR ',
+                            decimalDigits: 0,
+                          ).format(widget._destinationModel.price),
                           style: blackTextStyle.copyWith(
                             fontSize: 18,
                             fontWeight: medium,
@@ -233,7 +260,7 @@ class DetailPage extends StatelessWidget {
                         ),
                         const SizedBox(height: 5),
                         Text(
-                          'Per Orang',
+                          'per orang',
                           style: grayTextStyle.copyWith(
                               fontSize: 14, fontWeight: light),
                         ),
@@ -262,17 +289,43 @@ class DetailPage extends StatelessWidget {
       );
     }
 
-    return Scaffold(
-      backgroundColor: bgColor,
-      body: SafeArea(
-          child: SingleChildScrollView(
-        child: Stack(
-          children: [
-            _backgroundImage(),
-            _mainContent(),
-          ],
-        ),
-      )),
+    return BlocConsumer<DestinationCubit, DestinationState>(
+      listener: (context, state) {
+        if (state is DestinationFailed) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: kRedColor,
+              content: Text(state.errorMessage),
+            ),
+          );
+        }
+      },
+      builder: (context, state) {
+        if (state is DestinationSuccess) {
+          return Scaffold(
+            backgroundColor: bgColor,
+            body: SafeArea(
+              child: RefreshIndicator(
+                onRefresh: refresh,
+                child: SingleChildScrollView(
+                  child: Stack(
+                    children: [
+                      _backgroundImage(),
+                      _mainContent(),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
+        }
+        return Scaffold(
+          backgroundColor: bgColor,
+          body: const Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
+      },
     );
   }
 }

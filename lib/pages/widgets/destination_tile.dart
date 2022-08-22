@@ -4,10 +4,10 @@ import 'package:book_inn_air/shared/styles.dart';
 import 'package:flutter/material.dart';
 
 class DestinationTile extends StatelessWidget {
-  final DestinationModel destinations;
+  final DestinationModel _destinationModel;
 
   const DestinationTile(
-    this.destinations, {
+    this._destinationModel, {
     Key? key,
   }) : super(key: key);
 
@@ -17,7 +17,7 @@ class DestinationTile extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => DetailPage(),
+          builder: (context) => DetailPage(_destinationModel),
         ),
       ),
       child: Container(
@@ -38,7 +38,7 @@ class DestinationTile extends StatelessWidget {
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(
-                    destinations.imageUrl,
+                    _destinationModel.imageUrl,
                   ),
                 ),
               ),
@@ -50,7 +50,7 @@ class DestinationTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    destinations.name,
+                    _destinationModel.name,
                     style: blackTextStyle.copyWith(
                       fontSize: 18,
                       fontWeight: medium,
@@ -60,7 +60,7 @@ class DestinationTile extends StatelessWidget {
                   ),
                   const SizedBox(height: 5),
                   Text(
-                    destinations.location,
+                    _destinationModel.location,
                     style: grayTextStyle.copyWith(
                       fontSize: 14,
                       fontWeight: light,
@@ -80,7 +80,7 @@ class DestinationTile extends StatelessWidget {
                   size: 24,
                 ),
                 Text(
-                  destinations.rating.toString(),
+                  _destinationModel.rating.toString(),
                   style: blackTextStyle.copyWith(
                     fontSize: 14,
                     fontWeight: medium,

@@ -4,10 +4,10 @@ import 'package:book_inn_air/shared/styles.dart';
 import 'package:flutter/material.dart';
 
 class DestinationCard extends StatelessWidget {
-  final DestinationModel destinations;
+  final DestinationModel _destinationModel;
 
   const DestinationCard(
-    this.destinations, {
+    this._destinationModel, {
     Key? key,
   }) : super(key: key);
 
@@ -18,7 +18,7 @@ class DestinationCard extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => DetailPage(),
+          builder: (context) => DetailPage(_destinationModel),
         ),
       ),
       child: Container(
@@ -44,7 +44,7 @@ class DestinationCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18),
                 image: DecorationImage(
                   image: NetworkImage(
-                    destinations.imageUrl,
+                    _destinationModel.imageUrl,
                   ),
                   fit: BoxFit.cover,
                 ),
@@ -73,7 +73,7 @@ class DestinationCard extends StatelessWidget {
                         size: 20,
                       ),
                       Text(
-                        destinations.rating.toString(),
+                        _destinationModel.rating.toString(),
                         style: blackTextStyle.copyWith(
                           fontSize: 14,
                           fontWeight: medium,
@@ -91,7 +91,7 @@ class DestinationCard extends StatelessWidget {
                 children: [
                   // Destination name
                   Text(
-                    destinations.name,
+                    _destinationModel.name,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: blackTextStyle.copyWith(
@@ -102,7 +102,7 @@ class DestinationCard extends StatelessWidget {
                   const SizedBox(height: 5),
                   // Destination location
                   Text(
-                    destinations.location,
+                    _destinationModel.location,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: grayTextStyle.copyWith(
