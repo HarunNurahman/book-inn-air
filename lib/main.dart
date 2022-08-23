@@ -1,6 +1,7 @@
 import 'package:book_inn_air/cubit/auth_cubit.dart';
 import 'package:book_inn_air/cubit/destination_cubit.dart';
 import 'package:book_inn_air/cubit/page_cubit.dart';
+import 'package:book_inn_air/cubit/seat_cubit.dart';
 import 'package:book_inn_air/pages/bonus_page.dart';
 import 'package:book_inn_air/pages/dashboard_page.dart';
 import 'package:book_inn_air/pages/get-started_page.dart';
@@ -41,7 +42,10 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => DestinationCubit(),
-        )
+        ),
+        BlocProvider(
+          create: (context) => SeatCubit(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
