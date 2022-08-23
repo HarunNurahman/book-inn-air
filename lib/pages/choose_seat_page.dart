@@ -1,5 +1,6 @@
 import 'package:book_inn_air/cubit/seat_cubit.dart';
 import 'package:book_inn_air/models/destination_model.dart';
+import 'package:book_inn_air/models/transaction_model.dart';
 import 'package:book_inn_air/pages/checkout_page.dart';
 import 'package:book_inn_air/pages/widgets/custom_button.dart';
 import 'package:book_inn_air/pages/widgets/seat_item.dart';
@@ -432,17 +433,34 @@ class ChooseSeatPage extends StatelessWidget {
     Widget _checkoutButton() {
       return Padding(
         padding: EdgeInsets.only(top: defaultMargin + 6),
-        child: CustomButton(
-          title: 'Continue to Checkout',
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => CheckoutPage(),
-              ),
+        child: BlocBuilder<SeatCubit, List<String>>(
+          builder: (context, state) {
+            return CustomButton(
+              title: 'Continue to Checkout',
+              onPressed: () {
+
+                int price = _destinationModel.price * state.length;
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CheckoutPage(
+                      TransactionModel(
+                        destinationModel: _destinationModel,
+                        amountOfPeople: state.length,
+                        selectedSeats: state.join(', '),
+                        insurance: true,
+                        refundable: false,
+                        price: price,
+                        grandTotal: price + (price * 0.45).toInt(),
+                      ),
+                    ),
+                  ),
+                );
+              },
+              width: double.infinity,
             );
           },
-          width: double.infinity,
         ),
       );
     }

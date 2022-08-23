@@ -1,3 +1,4 @@
+import 'package:book_inn_air/models/transaction_model.dart';
 import 'package:book_inn_air/pages/success_checkout_page.dart';
 import 'package:book_inn_air/pages/widgets/booking_detail_item.dart';
 import 'package:book_inn_air/pages/widgets/custom_button.dart';
@@ -5,7 +6,9 @@ import 'package:book_inn_air/shared/styles.dart';
 import 'package:flutter/material.dart';
 
 class CheckoutPage extends StatelessWidget {
-  const CheckoutPage({Key? key}) : super(key: key);
+  final TransactionModel _transactionModel;
+
+  const CheckoutPage(this._transactionModel, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
