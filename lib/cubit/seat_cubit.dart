@@ -11,7 +11,7 @@ class SeatCubit extends Cubit<List<String>> {
     } else {
       state.remove(id);
     }
-    print('current state: $state');
+    // print('current state: $state');
     emit(state);
   }
 
