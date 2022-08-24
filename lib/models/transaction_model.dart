@@ -2,7 +2,7 @@ import 'package:book_inn_air/models/destination_model.dart';
 import 'package:equatable/equatable.dart';
 
 class TransactionModel extends Equatable {
-  final DestinationModel destinationModel;
+  final DestinationModel destination;
   final int amountOfPeople;
   final String selectedSeats;
   final bool insurance;
@@ -12,7 +12,7 @@ class TransactionModel extends Equatable {
   final int grandTotal;
 
   TransactionModel({
-    required this.destinationModel,
+    required this.destination,
     this.amountOfPeople = 0,
     this.selectedSeats = '',
     this.insurance = false,
@@ -24,7 +24,7 @@ class TransactionModel extends Equatable {
 
   @override
   List<Object?> get props => [
-        destinationModel,
+        destination,
         amountOfPeople,
         selectedSeats,
         insurance,

@@ -446,11 +446,12 @@ class ChooseSeatPage extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => CheckoutPage(
                       TransactionModel(
-                        destinationModel: _destinationModel,
+                        destination: _destinationModel,
                         amountOfPeople: state.length,
                         selectedSeats: state.join(', '),
                         insurance: true,
                         refundable: false,
+                        vat: 0.45,
                         price: price,
                         grandTotal: price + (price * 0.45).toInt(),
                       ),
