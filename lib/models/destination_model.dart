@@ -33,6 +33,15 @@ class DestinationModel extends Equatable {
         interest: json['interest'],
       );
 
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'name': name,
+        'location': location,
+        'imageUrl': imageUrl,
+        'rating': rating,
+        'price': price,
+      };
+
   @override
   List<Object?> get props => [
         id,
