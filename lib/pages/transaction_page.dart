@@ -1,7 +1,6 @@
 import 'package:book_inn_air/cubit/transaction_cubit.dart';
 import 'package:book_inn_air/pages/widgets/transaction_card.dart';
 import 'package:book_inn_air/shared/styles.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,16 +31,14 @@ class _TransactionPageState extends State<TransactionPage> {
         } else if (state is TransactionSuccess) {
           if (state.transactions.isEmpty) {
             return Center(
-              child: Text(
-                'Kamu Belum Memiliki Transaksi',
-                style: blackTextStyle.copyWith(
-                  fontSize: 18,
-                  fontWeight: medium,
-                ),
-              ),
+              child: Text('Kamu belum memiliki transaksi'),
             );
           } else {
             return ListView.builder(
+              itemCount: state.transactions.length,
+              padding: EdgeInsets.symmetric(
+                horizontal: defaultMargin,
+              ),
               itemBuilder: (context, index) {
                 return TransactionCard(
                   state.transactions[index],
@@ -49,24 +46,10 @@ class _TransactionPageState extends State<TransactionPage> {
               },
             );
           }
-        } else if (state is TransactionFailed) {
-          return Center(
-            child: Text(
-              'Data Transaksi Gagal Dimuat',
-              style: blackTextStyle.copyWith(
-                fontSize: 18,
-                fontWeight: medium,
-              ),
-            ),
-          );
         }
-        return Scaffold(
-          body: Center(
-            child: Text(
-              'Transaction Page',
-              style: blackTextStyle,
-            ),
-          ),
+
+        return Center(
+          child: Text('Transaction Page'),
         );
       },
     );

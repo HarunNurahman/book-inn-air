@@ -11,14 +11,6 @@ class TransactionInitial extends TransactionState {}
 
 class TransactionLoading extends TransactionState {}
 
-class TransactionFailed extends TransactionState {
-  final String error;
-  TransactionFailed(this.error);
-
-  @override
-  List<Object> get props => [error];
-}
-
 class TransactionSuccess extends TransactionState {
   final List<TransactionModel> transactions;
 
@@ -26,4 +18,12 @@ class TransactionSuccess extends TransactionState {
 
   @override
   List<Object> get props => [transactions];
+}
+
+class TransactionFailed extends TransactionState {
+  final String error;
+  TransactionFailed(this.error);
+
+  @override
+  List<Object> get props => [error];
 }

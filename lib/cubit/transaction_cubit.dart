@@ -21,15 +21,13 @@ class TransactionCubit extends Cubit<TransactionState> {
   void fetchTransaction() async {
     try {
       emit(TransactionLoading());
-      List<TransactionModel> transaction =
-          await TransactionService().fetchTransaction();
-      emit(TransactionSuccess(transaction));
+
+      List<TransactionModel> transactions =
+          await TransactionService().fetchTransactions();
+
+      emit(TransactionSuccess(transactions));
     } catch (e) {
-      emit(
-        TransactionFailed(
-          e.toString(),
-        ),
-      );
+      emit(TransactionFailed(e.toString()));
     }
   }
 }

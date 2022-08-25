@@ -2,15 +2,15 @@ import 'package:book_inn_air/models/transaction_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TransactionService {
-  final CollectionReference _transactionCollection =
-      FirebaseFirestore.instance.collection('transaction');
+  CollectionReference _transactionReference =
+      FirebaseFirestore.instance.collection('transactions');
 
   Future<void> createTransaction(TransactionModel transaction) async {
     try {
-      _transactionCollection.add({
+      _transactionReference.add({
         'destination': transaction.destination.toJson(),
         'amountOfPeople': transaction.amountOfPeople,
-        'selectedSeat': transaction.selectedSeat,
+        'selectedSeats': transaction.selectedSeats,
         'insurance': transaction.insurance,
         'refundable': transaction.refundable,
         'vat': transaction.vat,
@@ -22,19 +22,22 @@ class TransactionService {
     }
   }
 
-  Future<List<TransactionModel>> fetchTransaction() async {
+  Future<List<TransactionModel>> fetchTransactions() async {
     try {
-      QuerySnapshot result = await _transactionCollection.get();
-      List<TransactionModel> transactions = result.docs.map((e) {
-        return TransactionModel.fromJson(
-          e.id,
-          e.data() as Map<String, dynamic>,
-        );
-      }).toList();
+      QuerySnapshot result = await _transactionReference.get();
+
+      List<TransactionModel> transactions = result.docs.map(
+        (e) {
+          return TransactionModel.fromJson(
+            e.id,
+            e.data() as Map<String, dynamic>,
+          );
+        },
+      ).toList();
 
       return transactions;
     } catch (e) {
-      rethrow;
+      throw e;
     }
   }
 }
