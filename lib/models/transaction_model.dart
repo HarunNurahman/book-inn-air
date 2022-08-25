@@ -5,7 +5,7 @@ class TransactionModel extends Equatable {
   final String id;
   final DestinationModel destination;
   final int amountOfPeople;
-  final String selectedSeats;
+  final String selectedSeat;
   final bool insurance;
   final bool refundable;
   final double vat;
@@ -13,10 +13,10 @@ class TransactionModel extends Equatable {
   final int grandTotal;
 
   TransactionModel({
-    required this.destination,
     this.id = '',
+    required this.destination,
     this.amountOfPeople = 0,
-    this.selectedSeats = '',
+    this.selectedSeat = '',
     this.insurance = false,
     this.refundable = false,
     this.vat = 0,
@@ -32,7 +32,7 @@ class TransactionModel extends Equatable {
           json['destination'],
         ),
         amountOfPeople: json['amountOfPeople'],
-        selectedSeats: json['selectedSeats'],
+        selectedSeat: json['selectedSeat'],
         insurance: json['insurance'],
         refundable: json['refundable'],
         vat: json['vat'],
@@ -44,7 +44,7 @@ class TransactionModel extends Equatable {
   List<Object?> get props => [
         destination,
         amountOfPeople,
-        selectedSeats,
+        selectedSeat,
         insurance,
         refundable,
         vat,

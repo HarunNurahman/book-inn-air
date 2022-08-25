@@ -186,7 +186,7 @@ class CheckoutPage extends StatelessWidget {
                   // Booking Detail Items - Requested seat
                   BookingDetailItem(
                     name: 'Seat',
-                    value: _transactionModel.selectedSeats,
+                    value: _transactionModel.selectedSeat,
                     color: kPurpleColor,
                   ),
                   // Booking Detail Items - Insurance
