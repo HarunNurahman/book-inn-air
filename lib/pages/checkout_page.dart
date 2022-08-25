@@ -408,26 +408,27 @@ class CheckoutPage extends StatelessWidget {
     }
 
     return Scaffold(
-        backgroundColor: bgColor,
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: defaultMargin + 6,
-                horizontal: defaultMargin,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _imgRoute(),
-                  _bookingDetail(),
-                  _paymentDetail(),
-                  _payNowButton(),
-                  _tncButton(),
-                ],
-              ),
+      backgroundColor: bgColor,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: defaultMargin + 6,
+              horizontal: defaultMargin,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _imgRoute(),
+                _bookingDetail(),
+                _paymentDetail(),
+                _payNowButton(),
+                _tncButton(),
+              ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
