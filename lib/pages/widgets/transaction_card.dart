@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class TransactionCard extends StatelessWidget {
-  final TransactionModel _transactionModel;
+  final TransactionModel transactionModel;
 
-  const TransactionCard(this._transactionModel, {Key? key}) : super(key: key);
+  const TransactionCard(this.transactionModel, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class TransactionCard extends StatelessWidget {
                   image: DecorationImage(
                     fit: BoxFit.cover,
                     image: NetworkImage(
-                      _transactionModel.destination.imageUrl,
+                      transactionModel.destination.imageUrl,
                     ),
                   ),
                 ),
@@ -48,7 +48,7 @@ class TransactionCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      _transactionModel.destination.name,
+                      transactionModel.destination.name,
                       style: blackTextStyle.copyWith(
                         fontSize: 16,
                         fontWeight: medium,
@@ -58,7 +58,7 @@ class TransactionCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      _transactionModel.destination.location,
+                      transactionModel.destination.location,
                       style: grayTextStyle.copyWith(
                         fontSize: 12,
                         fontWeight: light,
@@ -78,7 +78,7 @@ class TransactionCard extends StatelessWidget {
                     size: 24,
                   ),
                   Text(
-                    _transactionModel.destination.rating.toString(),
+                    transactionModel.destination.rating.toString(),
                     style: blackTextStyle.copyWith(
                       fontSize: 12,
                       fontWeight: medium,
@@ -105,31 +105,31 @@ class TransactionCard extends StatelessWidget {
                 // Booking Detail Items - Travelere count
                 BookingDetailItem(
                   name: 'Traveler',
-                  value: '${_transactionModel.amountOfPeople} Person(s)',
+                  value: '${transactionModel.amountOfPeople} Person(s)',
                   color: kPurpleColor,
                 ),
                 // Booking Detail Items - Requested seat
                 BookingDetailItem(
                   name: 'Seat',
-                  value: _transactionModel.selectedSeats,
+                  value: transactionModel.selectedSeats,
                   color: kPurpleColor,
                 ),
                 // Booking Detail Items - Insurance
                 BookingDetailItem(
                   name: 'Insurance',
-                  value: _transactionModel.insurance ? 'YES' : 'NO',
-                  color: _transactionModel.insurance ? kGreenColor : kRedColor,
+                  value: transactionModel.insurance ? 'YES' : 'NO',
+                  color: transactionModel.insurance ? kGreenColor : kRedColor,
                 ),
                 // Booking Detail Items - Refundable
                 BookingDetailItem(
                   name: 'Refundable',
-                  value: _transactionModel.refundable ? 'YES' : 'NO',
-                  color: _transactionModel.refundable ? kGreenColor : kRedColor,
+                  value: transactionModel.refundable ? 'YES' : 'NO',
+                  color: transactionModel.refundable ? kGreenColor : kRedColor,
                 ),
                 // Booking Detail Items - VAT
                 BookingDetailItem(
                   name: 'VAT',
-                  value: '${(_transactionModel.vat * 100).toStringAsFixed(0)}%',
+                  value: '${(transactionModel.vat * 100).toStringAsFixed(0)}%',
                   color: kPurpleColor,
                 ),
                 // Booking Detail Items - Subtotal
@@ -139,7 +139,7 @@ class TransactionCard extends StatelessWidget {
                     locale: 'id_ID',
                     symbol: 'IDR ',
                     decimalDigits: 0,
-                  ).format(_transactionModel.price),
+                  ).format(transactionModel.price),
                   color: kPurpleColor,
                 ),
                 // Booking Detail Items - Total
@@ -149,7 +149,7 @@ class TransactionCard extends StatelessWidget {
                     locale: 'id_ID',
                     symbol: 'IDR ',
                     decimalDigits: 0,
-                  ).format(_transactionModel.grandTotal),
+                  ).format(transactionModel.grandTotal),
                   color: primaryColor,
                 ),
               ],

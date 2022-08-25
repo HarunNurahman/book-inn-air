@@ -1,4 +1,3 @@
-
 import 'package:book_inn_air/cubit/transaction_cubit.dart';
 import 'package:book_inn_air/pages/widgets/transaction_card.dart';
 import 'package:book_inn_air/shared/styles.dart';
@@ -9,7 +8,7 @@ class TransactionPage extends StatefulWidget {
   const TransactionPage({Key? key}) : super(key: key);
 
   @override
-  _TransactionPageState createState() => _TransactionPageState();
+  State<TransactionPage> createState() => _TransactionPageState();
 }
 
 class _TransactionPageState extends State<TransactionPage> {
@@ -33,27 +32,25 @@ class _TransactionPageState extends State<TransactionPage> {
           if (state.transactions.isEmpty) {
             return Center(
               child: Text(
-                'Kamu belum memiliki transaksi',
+                'Kamu belum melakukan transaksi',
                 style: blackTextStyle,
               ),
             );
           } else {
             return ListView.builder(
-                itemCount: state.transactions.length,
-                padding: EdgeInsets.symmetric(
-                  horizontal: defaultMargin,
-                ),
-                itemBuilder: (context, index) {
-                  return TransactionCard(
-                    state.transactions[index],
-                  );
-                });
+              padding: EdgeInsets.symmetric(
+                horizontal: defaultMargin,
+              ),
+              itemCount: state.transactions.length,
+              itemBuilder: (context, index) => TransactionCard(
+                state.transactions[index],
+              ),
+            );
           }
         }
-
         return Center(
           child: Text(
-            'Transaction Page',
+            'Transaction page',
             style: blackTextStyle,
           ),
         );

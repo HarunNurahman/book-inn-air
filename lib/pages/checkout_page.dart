@@ -1,7 +1,6 @@
 import 'package:book_inn_air/cubit/auth_cubit.dart';
 import 'package:book_inn_air/cubit/transaction_cubit.dart';
 import 'package:book_inn_air/models/transaction_model.dart';
-import 'package:book_inn_air/pages/success_checkout_page.dart';
 import 'package:book_inn_air/pages/widgets/booking_detail_item.dart';
 import 'package:book_inn_air/pages/widgets/custom_button.dart';
 import 'package:book_inn_air/shared/styles.dart';
