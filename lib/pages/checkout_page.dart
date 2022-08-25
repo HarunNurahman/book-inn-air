@@ -1,4 +1,5 @@
 import 'package:book_inn_air/cubit/auth_cubit.dart';
+import 'package:book_inn_air/cubit/transaction_cubit.dart';
 import 'package:book_inn_air/models/transaction_model.dart';
 import 'package:book_inn_air/pages/success_checkout_page.dart';
 import 'package:book_inn_air/pages/widgets/booking_detail_item.dart';
@@ -347,14 +348,40 @@ class CheckoutPage extends StatelessWidget {
     Widget _payNowButton() {
       return Padding(
         padding: EdgeInsets.only(top: defaultMargin + 6),
-        child: CustomButton(
-          title: 'Pay Now',
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SuccessCheckout(),
-              ),
+        child: BlocConsumer<TransactionCubit, TransactionState>(
+          listener: (context, state) {
+            if (state is TransactionSuccess) {
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                '/success',
+                (route) => false,
+              );
+            } else if (state is TransactionFailed) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  backgroundColor: kRedColor,
+                  content: Text(state.error),
+                ),
+              );
+            }
+          },
+          builder: (context, state) {
+            if (state is TransactionLoading) {
+              return Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.only(top: defaultMargin + 6),
+                child: CircularProgressIndicator(
+                  color: primaryColor,
+                ),
+              );
+            }
+            return CustomButton(
+              title: 'Pay Now',
+              onPressed: () {
+                context
+                    .read<TransactionCubit>()
+                    .createTransaction(_transactionModel);
+              },
             );
           },
         ),

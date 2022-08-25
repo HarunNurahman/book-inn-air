@@ -1,9 +1,11 @@
+import 'package:book_inn_air/cubit/page_cubit.dart';
 import 'package:book_inn_air/pages/widgets/custom_button.dart';
 import 'package:book_inn_air/shared/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SuccessCheckout extends StatelessWidget {
-  const SuccessCheckout({Key? key}) : super(key: key);
+class SuccessCheckoutPage extends StatelessWidget {
+  const SuccessCheckoutPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +46,7 @@ class SuccessCheckout extends StatelessWidget {
             CustomButton(
               title: 'My Booking(s)',
               onPressed: () {
+                context.read<PageCubit>().setPages(1);
                 Navigator.pushNamedAndRemoveUntil(
                   context,
                   '/dashboard',

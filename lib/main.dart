@@ -9,9 +9,10 @@ import 'package:book_inn_air/pages/get-started_page.dart';
 import 'package:book_inn_air/pages/sign-in_page.dart';
 import 'package:book_inn_air/pages/sign-up_page.dart';
 import 'package:book_inn_air/pages/splash_page.dart';
-import 'package:device_preview/device_preview.dart';
+import 'package:book_inn_air/pages/success_checkout_page.dart';
+// import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -63,6 +64,7 @@ class MyApp extends StatelessWidget {
           '/sign-in': (context) => SignInPage(),
           '/bonus': (context) => const BonusPage(),
           '/dashboard': (context) => const DashboardPage(),
+          '/success': (context) => const SuccessCheckoutPage(),
         },
       ),
     );
