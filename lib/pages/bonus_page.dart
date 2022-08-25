@@ -3,6 +3,7 @@ import 'package:book_inn_air/pages/widgets/custom_button.dart';
 import 'package:book_inn_air/shared/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 class BonusPage extends StatelessWidget {
   const BonusPage({Key? key}) : super(key: key);
@@ -78,7 +79,11 @@ class BonusPage extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'IDR 280.000.000',
+                    NumberFormat.currency(
+                      locale: 'id_ID',
+                      symbol: 'IDR ',
+                      decimalDigits: 0,
+                    ).format(state.user.balance),
                     style: whiteTextStyle.copyWith(
                       fontSize: 26,
                       fontWeight: medium,
