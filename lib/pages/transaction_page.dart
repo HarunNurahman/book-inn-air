@@ -1,3 +1,4 @@
+
 import 'package:book_inn_air/cubit/transaction_cubit.dart';
 import 'package:book_inn_air/pages/widgets/transaction_card.dart';
 import 'package:book_inn_air/shared/styles.dart';
@@ -8,13 +9,13 @@ class TransactionPage extends StatefulWidget {
   const TransactionPage({Key? key}) : super(key: key);
 
   @override
-  State<TransactionPage> createState() => _TransactionPageState();
+  _TransactionPageState createState() => _TransactionPageState();
 }
 
 class _TransactionPageState extends State<TransactionPage> {
   @override
   void initState() {
-    context.read<TransactionCubit>().fetchTransaction();
+    context.read<TransactionCubit>().fetchTransactions();
     super.initState();
   }
 
@@ -31,25 +32,30 @@ class _TransactionPageState extends State<TransactionPage> {
         } else if (state is TransactionSuccess) {
           if (state.transactions.isEmpty) {
             return Center(
-              child: Text('Kamu belum memiliki transaksi'),
+              child: Text(
+                'Kamu belum memiliki transaksi',
+                style: blackTextStyle,
+              ),
             );
           } else {
             return ListView.builder(
-              itemCount: state.transactions.length,
-              padding: EdgeInsets.symmetric(
-                horizontal: defaultMargin,
-              ),
-              itemBuilder: (context, index) {
-                return TransactionCard(
-                  state.transactions[index],
-                );
-              },
-            );
+                itemCount: state.transactions.length,
+                padding: EdgeInsets.symmetric(
+                  horizontal: defaultMargin,
+                ),
+                itemBuilder: (context, index) {
+                  return TransactionCard(
+                    state.transactions[index],
+                  );
+                });
           }
         }
 
         return Center(
-          child: Text('Transaction Page'),
+          child: Text(
+            'Transaction Page',
+            style: blackTextStyle,
+          ),
         );
       },
     );
