@@ -418,7 +418,9 @@ class ChooseSeatPage extends StatelessWidget {
                           locale: 'id_ID',
                           symbol: 'IDR ',
                           decimalDigits: 0,
-                        ).format(state.length * _destinationModel.price),
+                        ).format(
+                          state.length * _destinationModel.price!,
+                        ),
                       )
                     ],
                   ),
@@ -438,8 +440,7 @@ class ChooseSeatPage extends StatelessWidget {
             return CustomButton(
               title: 'Continue to Checkout',
               onPressed: () {
-
-                int price = _destinationModel.price * state.length;
+                int price = _destinationModel.price! * state.length;
 
                 Navigator.push(
                   context,

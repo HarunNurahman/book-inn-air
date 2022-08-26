@@ -57,7 +57,7 @@ class _DetailPageState extends State<DetailPage> {
           image: DecorationImage(
             fit: BoxFit.cover,
             image: NetworkImage(
-              widget._destinationModel.imageUrl,
+              widget._destinationModel.imageUrl!,
             ),
           ),
         ),
@@ -98,7 +98,7 @@ class _DetailPageState extends State<DetailPage> {
                       children: [
                         // Destination name
                         Text(
-                          widget._destinationModel.name,
+                          widget._destinationModel.name!,
                           style: whiteTextStyle.copyWith(
                             fontSize: 24,
                             fontWeight: semiBold,
@@ -108,7 +108,7 @@ class _DetailPageState extends State<DetailPage> {
                         ),
                         // Location
                         Text(
-                          widget._destinationModel.location,
+                          widget._destinationModel.location!,
                           style: whiteTextStyle.copyWith(
                             fontSize: 16,
                             fontWeight: light,
@@ -166,7 +166,7 @@ class _DetailPageState extends State<DetailPage> {
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    widget._destinationModel.about,
+                    widget._destinationModel.about!,
                     maxLines: 6,
                     overflow: TextOverflow.ellipsis,
                     style: blackTextStyle.copyWith(
@@ -214,10 +214,10 @@ class _DetailPageState extends State<DetailPage> {
                   Row(
                     children: [
                       InterestItem(
-                        title: widget._destinationModel.interest[0].toString(),
+                        title: widget._destinationModel.interest![0].toString(),
                       ),
                       InterestItem(
-                        title: widget._destinationModel.interest[1].toString(),
+                        title: widget._destinationModel.interest![1].toString(),
                       ),
                     ],
                   ),
@@ -225,10 +225,10 @@ class _DetailPageState extends State<DetailPage> {
                   Row(
                     children: [
                       InterestItem(
-                        title: widget._destinationModel.interest[2].toString(),
+                        title: widget._destinationModel.interest![2].toString(),
                       ),
                       InterestItem(
-                        title: widget._destinationModel.interest[3].toString(),
+                        title: widget._destinationModel.interest![3].toString(),
                       ),
                     ],
                   ),

@@ -8,7 +8,7 @@ class TransactionService {
   Future<void> createTransaction(TransactionModel transaction) async {
     try {
       _transactionReference.add({
-        'destination': transaction.destination.toJson(),
+        'destination': transaction.destination!.toJson(),
         'amountOfPeople': transaction.amountOfPeople,
         'selectedSeats': transaction.selectedSeats,
         'insurance': transaction.insurance,
@@ -27,6 +27,8 @@ class TransactionService {
       QuerySnapshot result = await _transactionReference.get();
       List<TransactionModel> transactions = result.docs.map(
         (e) {
+          // print('id: ' + e.id);
+          // print('data: ' + e.data().toString());
           return TransactionModel.fromJson(
             e.id,
             e.data() as Map<String, dynamic>,
@@ -36,6 +38,7 @@ class TransactionService {
 
       return transactions;
     } catch (e) {
+      // print('error:' + e.toString());
       throw e;
     }
   }

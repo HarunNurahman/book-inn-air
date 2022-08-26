@@ -22,6 +22,7 @@ class _TransactionPageState extends State<TransactionPage> {
   Widget build(BuildContext context) {
     return BlocBuilder<TransactionCubit, TransactionState>(
       builder: (context, state) {
+        print('state, $state');
         if (state is TransactionLoading) {
           return Center(
             child: CircularProgressIndicator(
@@ -47,6 +48,13 @@ class _TransactionPageState extends State<TransactionPage> {
               ),
             );
           }
+        } else if (state is TransactionFailed) {
+          return Center(
+            child: Text(
+              'Data Gagal Dimuat',
+              style: blackTextStyle,
+            ),
+          );
         }
         return Center(
           child: Text(

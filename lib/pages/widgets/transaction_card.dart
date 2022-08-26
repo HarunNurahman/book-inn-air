@@ -36,7 +36,7 @@ class TransactionCard extends StatelessWidget {
                   image: DecorationImage(
                     fit: BoxFit.cover,
                     image: NetworkImage(
-                      transactionModel.destination.imageUrl,
+                      transactionModel.destination!.imageUrl!,
                     ),
                   ),
                 ),
@@ -48,7 +48,7 @@ class TransactionCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      transactionModel.destination.name,
+                      transactionModel.destination!.name!,
                       style: blackTextStyle.copyWith(
                         fontSize: 16,
                         fontWeight: medium,
@@ -58,7 +58,7 @@ class TransactionCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      transactionModel.destination.location,
+                      transactionModel.destination!.location!,
                       style: grayTextStyle.copyWith(
                         fontSize: 12,
                         fontWeight: light,
@@ -78,7 +78,7 @@ class TransactionCard extends StatelessWidget {
                     size: 24,
                   ),
                   Text(
-                    transactionModel.destination.rating.toString(),
+                    transactionModel.destination!.rating.toString(),
                     style: blackTextStyle.copyWith(
                       fontSize: 12,
                       fontWeight: medium,
@@ -111,25 +111,25 @@ class TransactionCard extends StatelessWidget {
                 // Booking Detail Items - Requested seat
                 BookingDetailItem(
                   name: 'Seat',
-                  value: transactionModel.selectedSeats,
+                  value: transactionModel.selectedSeats!,
                   color: kPurpleColor,
                 ),
                 // Booking Detail Items - Insurance
                 BookingDetailItem(
                   name: 'Insurance',
-                  value: transactionModel.insurance ? 'YES' : 'NO',
-                  color: transactionModel.insurance ? kGreenColor : kRedColor,
+                  value: transactionModel.insurance! ? 'YES' : 'NO',
+                  color: transactionModel.insurance! ? kGreenColor : kRedColor,
                 ),
                 // Booking Detail Items - Refundable
                 BookingDetailItem(
                   name: 'Refundable',
-                  value: transactionModel.refundable ? 'YES' : 'NO',
-                  color: transactionModel.refundable ? kGreenColor : kRedColor,
+                  value: transactionModel.refundable! ? 'YES' : 'NO',
+                  color: transactionModel.refundable! ? kGreenColor : kRedColor,
                 ),
                 // Booking Detail Items - VAT
                 BookingDetailItem(
                   name: 'VAT',
-                  value: '${(transactionModel.vat * 100).toStringAsFixed(0)}%',
+                  value: '${(transactionModel.vat! * 100).toStringAsFixed(0)}%',
                   color: kPurpleColor,
                 ),
                 // Booking Detail Items - Subtotal

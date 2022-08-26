@@ -67,7 +67,7 @@ class CheckoutPage extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        _transactionModel.destination.location,
+                        _transactionModel.destination!.location!,
                         style: grayTextStyle.copyWith(
                           fontSize: 14,
                           fontWeight: light,
@@ -110,7 +110,7 @@ class CheckoutPage extends StatelessWidget {
                     image: DecorationImage(
                       fit: BoxFit.cover,
                       image: NetworkImage(
-                        _transactionModel.destination.imageUrl,
+                        _transactionModel.destination!.imageUrl!,
                       ),
                     ),
                   ),
@@ -122,7 +122,7 @@ class CheckoutPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        _transactionModel.destination.name,
+                        _transactionModel.destination!.name!,
                         style: blackTextStyle.copyWith(
                           fontSize: 16,
                           fontWeight: medium,
@@ -132,7 +132,7 @@ class CheckoutPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        _transactionModel.destination.location,
+                        _transactionModel.destination!.location!,
                         style: grayTextStyle.copyWith(
                           fontSize: 12,
                           fontWeight: light,
@@ -152,7 +152,7 @@ class CheckoutPage extends StatelessWidget {
                       size: 24,
                     ),
                     Text(
-                      _transactionModel.destination.rating.toString(),
+                      _transactionModel.destination!.rating.toString(),
                       style: blackTextStyle.copyWith(
                         fontSize: 12,
                         fontWeight: medium,
@@ -185,28 +185,28 @@ class CheckoutPage extends StatelessWidget {
                   // Booking Detail Items - Requested seat
                   BookingDetailItem(
                     name: 'Seat',
-                    value: _transactionModel.selectedSeats,
+                    value: _transactionModel.selectedSeats!,
                     color: kPurpleColor,
                   ),
                   // Booking Detail Items - Insurance
                   BookingDetailItem(
                     name: 'Insurance',
-                    value: _transactionModel.insurance ? 'YES' : 'NO',
+                    value: _transactionModel.insurance! ? 'YES' : 'NO',
                     color:
-                        _transactionModel.insurance ? kGreenColor : kRedColor,
+                        _transactionModel.insurance! ? kGreenColor : kRedColor,
                   ),
                   // Booking Detail Items - Refundable
                   BookingDetailItem(
                     name: 'Refundable',
-                    value: _transactionModel.refundable ? 'YES' : 'NO',
+                    value: _transactionModel.refundable! ? 'YES' : 'NO',
                     color:
-                        _transactionModel.refundable ? kGreenColor : kRedColor,
+                        _transactionModel.refundable! ? kGreenColor : kRedColor,
                   ),
                   // Booking Detail Items - VAT
                   BookingDetailItem(
                     name: 'VAT',
                     value:
-                        '${(_transactionModel.vat * 100).toStringAsFixed(0)}%',
+                        '${(_transactionModel.vat! * 100).toStringAsFixed(0)}%',
                     color: kPurpleColor,
                   ),
                   // Booking Detail Items - Subtotal
