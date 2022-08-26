@@ -39,8 +39,10 @@ class _TransactionPageState extends State<TransactionPage> {
             );
           } else {
             return ListView.builder(
-              padding: EdgeInsets.symmetric(
-                horizontal: defaultMargin,
+              padding: EdgeInsets.only(
+                left: defaultMargin,
+                right: defaultMargin,
+                bottom: 100,
               ),
               itemCount: state.transactions.length,
               itemBuilder: (context, index) => TransactionCard(
