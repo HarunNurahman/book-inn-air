@@ -44,7 +44,7 @@ class DestinationCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18),
                 image: DecorationImage(
                   image: NetworkImage(
-                    _destinationModel.imageUrl,
+                    _destinationModel.imageUrl!,
                   ),
                   fit: BoxFit.cover,
                 ),
@@ -91,7 +91,7 @@ class DestinationCard extends StatelessWidget {
                 children: [
                   // Destination name
                   Text(
-                    _destinationModel.name,
+                    _destinationModel.name!,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: blackTextStyle.copyWith(
@@ -102,7 +102,7 @@ class DestinationCard extends StatelessWidget {
                   const SizedBox(height: 5),
                   // Destination location
                   Text(
-                    _destinationModel.location,
+                    _destinationModel.location!,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     style: grayTextStyle.copyWith(

@@ -38,7 +38,7 @@ class DestinationTile extends StatelessWidget {
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(
-                    _destinationModel.imageUrl,
+                    _destinationModel.imageUrl!,
                   ),
                 ),
               ),
@@ -50,7 +50,7 @@ class DestinationTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    _destinationModel.name,
+                    _destinationModel.name!,
                     style: blackTextStyle.copyWith(
                       fontSize: 18,
                       fontWeight: medium,
@@ -60,7 +60,7 @@ class DestinationTile extends StatelessWidget {
                   ),
                   const SizedBox(height: 5),
                   Text(
-                    _destinationModel.location,
+                    _destinationModel.location!,
                     style: grayTextStyle.copyWith(
                       fontSize: 14,
                       fontWeight: light,
