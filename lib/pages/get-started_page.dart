@@ -7,6 +7,38 @@ class GetStartedPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget signUpButton() {
+      return Container(
+        margin: const EdgeInsets.only(
+          bottom: 50,
+        ),
+        width: 220,
+        height: 55,
+        child: TextButton(
+          style: TextButton.styleFrom(
+            backgroundColor: kTransparentColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(defaultRadius),
+              side: BorderSide(
+                width: 1,
+                color: kWhiteColor,
+              ),
+            ),
+          ),
+          onPressed: () {
+            Navigator.pushNamed(context, '/sign-up');
+          },
+          child: Text(
+            'Get Started',
+            style: whiteTextStyle.copyWith(
+              fontSize: 18,
+              fontWeight: medium,
+            ),
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       body: Stack(
         children: [
@@ -45,16 +77,17 @@ class GetStartedPage extends StatelessWidget {
                 ),
                 // Get started button
                 CustomButton(
-                  title: 'Get Started',
+                  title: 'Sign In',
                   margin: const EdgeInsets.only(
                     top: 50,
-                    bottom: 80,
+                    bottom: 30,
                   ),
                   width: 220,
                   onPressed: () {
-                    Navigator.pushNamed(context, '/sign-up');
+                    Navigator.pushNamed(context, '/sign-in');
                   },
                 ),
+                signUpButton(),
               ],
             ),
           )
